@@ -1,16 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: amix the lucky stiff
-"             http://amix.dk - amix@amix.dk
+" Maintainer: peteryj, yj.sagacity@gmail.com
 "
-" Version: 3.6 - 25/08/10 14:40:30
+" Version: 1.0 - 16/07/2012
 "
-" Blog_post: 
-"       http://amix.dk/blog/post/19486#The-ultimate-vim-configuration-vimrc
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-" Raw_version: 
-"       http://amix.dk/vim/vimrc.txt
-"
+" ForkFrom: 
+"       http://amix.dk/vim/vimrc.txt, V3.6
+" 
 " How_to_Install_on_Unix:
 "    $ mkdir ~/.vim_runtime
 "    $ svn co svn://orangoo.com/vim ~/.vim_runtime
@@ -19,7 +14,7 @@
 "      <sytem> can be `mac`, `linux` or `windows`
 "
 " How_to_Upgrade:
-"    $ svn update ~/.vim_runtime
+"    $ git pull git@github.com:peteryj/vim.git master
 "
 " Sections:
 "    -> General
@@ -67,20 +62,8 @@
 "       Plugin to manage Most Recently Used (MRU) files:
 "           info -> :e ~/.vim_runtime/plugin/mru.vim
 "
-"     > Command-T - http://www.vim.org/scripts/script.php?script_id=3025
-"       Command-T plug-in provides an extremely fast, intuitive mechanism for opening filesa:
-"           info -> :help CommandT
-"           screencast and web-help -> http://amix.dk/blog/post/19501
-"
-"
 "  Revisions:
-"     > 3.6: Added lots of stuff (colors, Command-T, Vim 7.3 persistent undo etc.)
-"     > 3.5: Paste mode is now shown in status line  if you are in paste mode
-"     > 3.4: Added mru.vim
-"     > 3.3: Added syntax highlighting for Mako mako.vim 
-"     > 3.2: Turned on python_highlight_all for better syntax
-"            highlighting for Python
-"     > 3.1: Added revisions ;) and bufexplorer.vim
+"     > 1.0: initial version
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -158,6 +141,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -181,7 +165,7 @@ if has("gui_running")
   colorscheme peaksea
   set nonu
 else
-  colorscheme default 
+  colorscheme zellner
   set background=dark
   set nonu
 endif
@@ -402,17 +386,6 @@ try
 catch
 endtry
 
-" Return to last edit position (You want this!) *N*
-"autocmd BufReadPost *
-"     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"     \   exe "normal! g`\"" |
-"     \ endif
-
-
-"Remeber open buffers on close
-"set viminfo^=%
-
-
 """"""""""""""""""""""""""""""
 " => Statusline
 """"""""""""""""""""""""""""""
@@ -531,8 +504,8 @@ let g:miniBufExplorerMoreThanOne = 0
 let g:miniBufExplModSelTarget = 0
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplVSplit = 30
-let g:miniBufExplSplitBelow=1
+let g:miniBufExplVSplit = 0
+let g:miniBufExplSplitBelow=0
 
 autocmd BufRead,BufNew :call UMiniBufExplorer
 
@@ -611,15 +584,6 @@ map <leader>f :MRU<CR>
 
 
 """"""""""""""""""""""""""""""
-" => Command-T
-""""""""""""""""""""""""""""""
-let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc
-noremap <leader>y :CommandTFlush<cr>
-"noremap! <leader>j :PeepOpen<cr>
-
-
-""""""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
@@ -653,9 +617,21 @@ if MySys() == "mac"
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => MY SETTINGS 
+" => TagList (ctags)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if MySys() == "linux"
+    let Tlist_Ctags_Cmd="/usr/bin/ctags"
+endif
+
+let Tlist_Show_Onefile = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_Right_Window = 0
+map <silent> <F9> :TlistToggle<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => My Settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme default
+set background=light
+hi Comment ctermfg=lightblue
 set number
 set mouse=a
-
-colorscheme default
