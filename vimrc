@@ -514,9 +514,14 @@ map <leader>u :TMiniBufExplorer<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Omni complete functions
+" => Omni complete functions --> clang
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+let g:clang_complete_copen=1
+let g:clang_periodic_quickfix=1
+let g:clang_snippets=1
+let g:clang_close_preview=1
+let g:clang_use_library=1
+let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -627,6 +632,22 @@ let Tlist_Show_Onefile = 1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 0
 map <silent> <F9> :TlistToggle<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => DoxygenToolkit
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:DoxygenToolkit_authorName="Peter.Y, yj.sagacity@gmail.com"
+let s:licenseTag = "Copyright(C)\<enter>"
+let s:licenseTag = s:licenseTag . "For free\<enter>"
+let s:licenseTag = s:licenseTag . "All right reserved"
+let g:DoxygenToolkit_licenseTag = s:licenseTag
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:doxygen_enhanced_color=1
+
+map <leader>af :DoxAuthor<cr>
+map <leader>al :DoxLic<cr>
+map <leader>aa :Dox<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => My Settings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
