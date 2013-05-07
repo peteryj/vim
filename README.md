@@ -15,3 +15,6 @@ vim
 ====
   git push git@github.com:peteryj/vim.git
 
+4. For GO Language
+====
+  You need to disable 'syntax on' in '/etc/vim/vimrc', otherwise it will not work correctly.
