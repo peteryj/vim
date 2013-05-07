@@ -656,3 +656,7 @@ set background=light
 hi Comment ctermfg=lightblue
 set number
 set mouse=a
+
+filetype plugin on
+filetype indent on
+syntax on
