@@ -657,6 +657,8 @@ hi Comment ctermfg=lightblue
 set number
 set mouse=a
 
-filetype plugin on
-filetype indent on
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
 syntax on
