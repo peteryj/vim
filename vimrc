@@ -511,19 +511,6 @@ autocmd BufRead,BufNew :call UMiniBufExplorer
 
 map <leader>u :TMiniBufExplorer<cr>
 
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Omni complete functions --> clang
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:clang_complete_copen=1
-let g:clang_periodic_quickfix=1
-let g:clang_snippets=1
-let g:clang_close_preview=1
-let g:clang_use_library=1
-let g:clang_user_options='-stdlib=libc++ -std=c++11 -IIncludePath'
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
